@@ -1,29 +1,64 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<div class="container form">
+  <h2 class="text-center">Đăng ký</h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class:["form-horizontal"]) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <div class="form-group form-group-c">
+      <%= f.label :email, class: ["col-sm-3 label-control col-sm-offset-2"] %>
+      <div class="col-sm-5">
+        <%= f.email_field :email, autofocus: true, class:["form-control"] %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <div class="form-group form-group-c">
+      <%= f.label "Họ và tên", class:["label-control col-sm-3 col-sm-offset-2"] %>
+      <div class="col-sm-4">
+        <%= f.text_field :fullname, class:["form-control"] %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+    <div class="form-group form-group-c">
+      <%= f.label "Số Chứng minh thư", class:["label-control col-sm-3 col-sm-offset-2"] %>
+      <div class="col-sm-3">
+        <%= f.text_field :cmt, class:["form-control"] %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="form-group form-group-c">
+      <%= f.label "Ngày tháng năm sinh", class:["label-control col-sm-3 col-sm-offset-2"] %>
+      <div class="col-sm-5">
+        <%= f.date_select :dob, start_year: 1970, end_year: 2000, class:["form-control"], order:[:day, :month, :year] %>
+      </div>
+    </div>
 
-<%= render "users/shared/links" %>
+    <div class="form-group form-group-c">
+      <%= f.label "Địa chỉ", class:["label-control col-sm-3 col-sm-offset-2"] %>
+      <div class="col-sm-5">
+        <%= f.text_field :address, class:["form-control"] %>
+      </div>
+    </div>
+
+    <div class="form-group form-group-c">
+      <%= f.label :password, class:["label-control col-sm-3 col-sm-offset-2"] %>
+      <div class="col-sm-5">
+        <%= f.password_field :password, autocomplete: "off", class:["form-control"] %>
+      </div>
+    </div>
+
+    <div class="form-group form-group-c">
+      <%= f.label :password_confirmation, class:["col-sm-3 label-control col-sm-offset-2"] %>
+    <div class="col-sm-5">
+      <%= f.password_field :password_confirmation, autocomplete: "off", class:["form-control"] %>
+    </div>
+    </div>
+
+    <div class="form-group form-group-c">
+        <%= f.submit "Sign up", class: ["col-sm-offset-5 btn btn-primary"] %>
+    </div>
+  <% end %>
+    <div class="col-sm-5 col-sm-offset-5">
+      <%= render "users/shared/links" %>
+    </div>
+
+</div>
